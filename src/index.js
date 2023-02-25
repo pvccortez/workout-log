@@ -48,7 +48,7 @@ if(!hasData)
 //                             ]}
 
 // Possible fix to "You need to enable Javascript to run this app" issue, 
-const router = createBrowserRouter([{ path: "/", element: <div>Test page</div> }]); /*Delete if it doesn't work*/
+const router = createBrowserRouter([{ path: "/", element: <div>Test page</div> }]); 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
