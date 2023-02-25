@@ -1,0 +1,1723 @@
+*
+{
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+
+:root 
+{
+  --background-color: lime;
+  --modal-text-color: rgb(255, 255, 255);
+
+  --sidebar-width: 200px;
+  --mobile-navbar-height: 100px;
+  --mobile-sidebar-height: 70px;
+  --mobile-sidebar-padding: 10px; 
+}
+
+
+.html
+{
+  width: 100vw;
+  background-color: lavender;
+}
+
+
+::-webkit-scrollbar
+{
+  width: 5px;
+  height: 5px;
+}
+
+
+::-webkit-scrollbar-track
+{
+  background: radial-gradient(circle, rgba(251, 248, 248, 1) 58%, rgba(152, 217, 251, 1) 95%);
+}
+
+
+::-webkit-scrollbar-thumb
+{
+  height: 25px;
+  background-color: dodgerblue;
+  border-radius: 2em;
+}
+
+
+body 
+{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: red;
+
+  overflow-x: hidden;
+  
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+#root 
+{
+  width: 100vw;
+  height: auto;
+}
+
+
+ul
+{
+  list-style-type: none;
+}
+
+
+.App
+{
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: grid;
+  justify-content: stretch;
+  grid-template-rows: auto;
+  grid-template-columns: auto repeat(4, minmax(50px, 1fr));
+  grid-template-areas: "navbar navbar navbar navbar navbar"
+    "sidebar log log log log"
+    "sidebar log log log log"
+    "sidebar log log log log"
+    "sidebar log log log log";
+}
+
+
+.bold-span
+{
+  font-weight: bold;
+}
+
+
+.light-grey-span
+{
+  color: grey;
+}
+
+
+.navbar 
+{
+  height: 100px;
+  width: 100%;
+
+  position: fixed;
+  z-index: 100;
+
+
+  background-color: #daf1fd;
+  grid-area: navbar;
+  display: flex;  
+}
+
+
+.navbar-logo-div
+{
+  width: 200px;
+  height: 100%;
+  padding: 3px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  column-gap: 2px;
+}
+
+
+.navbar-logo-div p
+{
+  width: 100%;
+  height: 100%;
+
+  font-size: clamp(0.85rem, 5vw, 1.5rem);
+  font-weight: bold;
+  font-family: 'Oleo Script', cursive;
+  color: dodgerblue;
+}
+
+
+.navbar-center
+{
+  width: 100%;
+  padding: 10px;
+  display: flex;
+}
+
+
+.navbar-center ul 
+{
+  list-style-type: none;
+}
+
+
+.navbar-links 
+{
+  flex-basis: calc(100vw - 200px);
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+.navbar-btn 
+{
+  width: clamp(95px, 13vw, 175px);
+  background-color: transparent;
+  border: none;
+  border-radius: 0.75rem;
+  padding-block: 5px;
+  padding-inline: 3px;
+
+  font-size: clamp(0.75rem, 1.5vw, 1.25rem);
+  font-weight: bold;
+  font-family: 'Oleo Script', cursive;
+  text-align: center;
+  background-color: red;
+  color: white;
+}
+
+
+.navbar-btn:hover
+{
+  background-color: orange;
+  color: white;
+}
+
+
+.navbar-toggle-btn
+{
+  justify-self: end;
+  height: auto;
+  width: auto;
+  margin-right: 10px;
+  background-color: rgb(218, 241, 253);
+
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  display: none;
+}
+
+
+.navbar-dropdown-links
+{
+  width: 100% ;
+  padding-block: 10px;
+  position: absolute;
+  z-index: 10;
+  left: 0px;
+  top: var(--mobile-navbar-height);
+
+  background-color: rgb(218, 241, 253);
+  display: none;
+}
+
+
+.display-links
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  row-gap: 15px;
+}
+
+
+.find-sheet-modal 
+{
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  box-sizing: border-box;
+  
+  position: fixed;
+  z-index: 1000;
+  top: 0px;
+  left: 0px;
+
+  background-color: rgba(0, 0, 0, 0.65);
+
+  display: none;
+}
+
+
+.display-find-sheet-modal
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.find-sheet-modal-center 
+{
+  position: relative;
+  width: clamp(205px, 65vw, 95%);
+  height: clamp(405px, 5vh, 50%);
+  
+
+  background-color: rgba(30, 144, 255, 0.85);
+  border: solid white 2px;
+  border-radius: 0.75rem;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+.find-sheet-list li
+{
+  width: 100%;
+}
+
+
+.find-sheet-modal-container
+{
+  height: 100%;
+  width: 100%;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: nowrap;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15px;
+}
+
+
+.find-sheet-header
+{
+  font-family: 'Oleo Script', cursive;
+  font-weight: bold;
+  font-size: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+
+.find-sheets-list
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+}
+
+
+.find-sheet-option
+{
+  border-radius: 0.50rem;
+  padding: 5px;
+  width: 100%;
+  
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  font-size: clamp(0.65rem, 3vw, 1.25rem);
+
+  display: flex;
+  align-items: end;
+  column-gap: 10px;
+
+  /* background-color: green; */
+}
+
+
+.find-sheet-btn
+{
+  font-size: clamp(0.65rem, 3vw, 1.25rem);
+  padding: 2px;
+  border: none;
+  color: white;
+  background-color: red;
+  border-radius: 0.25rem;
+
+  align-self: end !important;
+  justify-self: end !important;
+}
+
+
+.find-sheet-btn:hover
+{
+  background-color: rgb(255, 179, 71);;
+}
+
+
+.find-sheet-option span
+{
+  color: dodgerblue;
+}
+
+
+.sidebar
+{
+  position: fixed;
+  top: 100px;
+  left: 0px;
+  background: linear-gradient(180deg, rgba(218, 241, 253, 1) 0%, rgba(31, 143, 255, 1) 100%);
+  width: var(--sidebar-width);
+  height: 100%;
+
+  grid-area: sidebar;
+}
+
+
+/*************** Workout Log Section ***************/
+.workout-log 
+{
+  grid-area: log;
+  align-self: start;
+
+  transform: translate(var(--sidebar-width), var(--mobile-navbar-height));
+
+  width: calc(100% - var(--sidebar-width));
+  height: auto;
+  padding-bottom: 20px;
+  background-color: white;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.toolbar 
+{
+  width: 95%;
+  height: 100px;
+  background-color: transparent;
+
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-areas: "edit-notes-btn toolbar-center new-workout-btn";
+  grid-template-rows: auto; 
+}
+
+
+.toolbar-center 
+{
+  width: auto;
+  font-size: clamp(0.85rem, 4vw, 1.5rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  justify-self: center;
+  grid-area: toolbar-center; 
+}
+
+
+.date-container
+{
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-size: clamp(0.85rem, 4vw, 1.5rem);
+  font-weight: bold;
+  color: dodgerblue;
+}
+
+
+.time-stamp-span
+{
+  color: rgb(221, 221, 221);
+  font-size: 0.8rem;
+}
+
+
+.date-btn 
+{
+  width: auto;
+  height: 25px;
+
+  color: dodgerblue;
+  font-size: clamp(0.85rem, 3vw, 1.5rem);  
+  background-color: transparent;
+  border: none;
+  border-radius: 0.25rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.date-btn:hover
+{
+  color: white;
+  background-color: #1f8fff;
+}
+
+
+.workout-sheet 
+{
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+
+
+.new-exercise-modal
+{
+  position: fixed;
+  z-index: 10000;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  
+  display: none;
+}
+
+
+.new-set-modal 
+{
+  position: fixed;
+  z-index: 10;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: none;
+}
+
+
+.set-modal-center
+{
+  width: clamp(150px, 70%, 500px);
+  height: clamp(200px, 50%, 250px);
+  padding: 10px;
+
+  background-color: rgb(30, 144, 255, 0.85);
+  border: solid white 2px;
+  border-radius: 0.75rem;
+
+  position: relative;
+  top: 50px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+
+.display-modal
+{
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+
+.modal-center
+{
+  width: clamp(150px, 80%, 600px);
+  height: clamp(200px, 50%, 350px);
+  padding-block: 45px;
+  padding-inline: 15px;
+  
+
+  background-color: rgb(30, 144, 255, 0.85);
+  border: solid white 2px;
+  border-radius: 0.75rem;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+
+  position: relative;
+  top: 50px;
+}
+
+
+.modal-form
+{
+  height: 60%;
+  width: 100%;
+  justify-self: center;
+  align-self: center;
+
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: auto minmax(auto, 50%);
+  grid-template-rows: repeat(5, minmax(50px, auto));
+  column-gap: 5px;
+}
+
+
+.weight-set-modal-form
+{
+  height: 60%;
+  width: 100%;
+  justify-self: center;
+  align-self: center;
+
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: auto minmax(auto, 50%);
+  grid-template-rows: repeat(3, minmax(50px, auto));
+  column-gap: 5px;
+}
+
+
+.cardio-input-container
+{
+  display: grid;
+  justify-content: center;
+  column-gap: 15px;
+  grid-template-columns: repeat(3, minmax(25px, 25%));
+}
+
+.cardio-distance-container
+{
+  display: grid;
+  justify-content: center;
+  column-gap: 15px;
+  grid-template-columns: repeat(2, minmax(75px, 45%));
+}
+
+
+.unit-dropdown
+{
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  align-items: center;  
+  grid-template-columns: 1fr auto;
+  font-weight: bold;
+}
+
+
+.unit-type-container
+{
+  width: auto;
+  position: absolute;
+  top:25px;
+  z-index: 100;
+}
+
+
+.cardio-input-container input
+{
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
+
+
+.modal-header
+{
+  width: 100%;
+  color: var(--modal-text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  text-transform: capitalize;
+}
+
+
+.close-modal-btn
+{
+  position: absolute;
+  top: -10px;
+  right: -10px;
+
+  width: 35px;
+  height: 35px;
+  border: solid white 2px;
+  border-radius: 50%;
+
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  transition: transform 0.45s linear, background-color 0.45s linear;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.close-modal-btn:hover
+{
+  transform: rotate(180deg);
+  background-color: gray;
+}
+
+
+form label
+{
+  width: auto;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  font-size: clamp(0.65rem, 3vw, 1.25rem);
+  font-weight: bold;
+
+  text-align: end;
+  color: var(--modal-text-color);
+  justify-self: end;
+}
+
+
+form input
+{
+  width: 95%;
+  height: auto;
+  padding: 4px;
+  justify-self: end;
+
+  border-radius: 0.25rem;
+  border: none;
+  font-size: clamp(0.85rem, 3vw, 1rem);
+}
+
+
+.modal-submit-btn
+{
+  width: clamp(100px, 80%, 500px);
+
+  background-color: var(--modal-text-color);
+  border: solid black 2px;
+  border-radius: 0.25rem;
+
+  color: dodgerblue;
+  font-weight: bold;
+  font-size: clamp(0.85rem, 3vw, 1.25rem);
+
+  justify-self: end;
+  /* grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 5;
+  grid-row-end: 6; */
+}
+
+
+
+
+.modal-submit-btn:hover
+{
+  background-color: darkgray;
+  color: var(--modal-text-color);
+}
+
+
+.modal-error-span
+{
+  color: red;
+  font-weight: bold;
+  font-size: clamp(0.85rem, 3vw, 1rem);
+}
+
+
+.new-workout-btn
+{
+  width: auto;
+  /* margin-right: 10px; */
+  aspect-ratio: 1/1;
+  padding: 5px;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 0.5rem; 
+  color: green;
+  font-weight: bolder;
+
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+
+  grid-area: new-workout-btn;
+  align-self: center; 
+  justify-self: end;
+  /* margin-right: 25px; */
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} 
+
+
+.edit-notes-btn 
+{
+  width: auto;
+  /* margin-right: 10px; */
+  aspect-ratio: 1/1;
+  padding: 5px;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  color: rgb(255, 106, 0);
+  font-weight: bolder;
+
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+
+  grid-area: edit-notes-btn;
+  align-self: center;
+  justify-self: start;
+  margin-right: 25px;
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.edit-notes-btn:hover
+{
+  color: white;
+  background-color: rgb(255, 106, 0);
+}
+
+
+.notes-span
+{
+  font-size: clamp(0.5rem, 2vw, 0.75rem);
+}
+
+
+.notes-modal
+{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: scale(0);
+  transition: .50s linear;
+}
+
+
+.display-notes-modal
+{
+  transform: scale(1);
+  /* background-color: red; */
+}
+
+
+.new-workout-btn:hover
+{
+  background-color: green;
+  color: white;
+}
+
+.notes-modal-center
+{
+  width: clamp(200px, 95%, 800px);
+  padding: 10px;
+  background-color: white;
+  border-radius: 1rem;
+
+  position: absolute;
+  top: 50px;
+}
+
+
+.notes-form
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.notes-text-area
+{
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  width: 90%;
+  aspect-ratio: 3/2;
+  padding: 5px;
+}
+
+
+.notes-btn-container
+{
+  width: 90%;
+
+  display: flex;
+  padding-inline: 5px;
+  padding-block: 5px;
+  justify-content: space-between;
+
+  /* background-color: gray; */
+}
+
+
+.notes-btn
+{
+
+  
+  border: none;
+  border-radius: 0.5rem;
+  padding: 5px;
+  background-color: cornflowerblue;
+
+  font-size: clamp(0.75rem, 3vw, 1.25rem);
+  font-weight: bold;
+  color: white;
+}
+
+
+.save-notes-btn
+{
+  animation: save-notes-animt 2s infinite linear;
+  background-color: red;
+}
+
+
+@keyframes save-notes-animt
+{
+  0% {scale: 1;}
+  50% {scale: 1.20}
+  100% {scale: 1}
+}
+
+
+.new-workout-btn span
+{
+  font-size: clamp(0.5rem, 2vw, 0.75rem);
+}
+
+
+.workout-set
+{
+  width: 95%;
+  height: auto;
+  padding: 10px;
+
+  background-color: rgb(199, 224, 252)   ;
+  border-radius: 0.5rem;
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  row-gap: 10px;
+  column-gap: 5px;
+}
+
+
+.workout-set:nth-of-type(even)
+{
+  background-color: #f3b3b3;
+}
+
+
+.set-center
+{
+  display: flex;
+  column-gap: 10px;
+
+  overflow: auto;
+  white-space: nowrap;
+}
+
+
+.set-center::-webkit-scrollbar 
+{
+  scroll-margin-top: 15px;
+  height: 10px;
+  /* height of horizontal scrollbar ← You're missing this */
+  /* width: 30px; */
+  /* width of vertical scrollbar */
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  background-color: lightblue;
+}
+
+
+.set-info
+{
+  position: relative;
+  z-index: 1;
+  width: auto;
+
+  text-transform: capitalize;
+  color: dodgerblue;
+
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  align-items: center;
+}
+
+
+.delete-exercise-btn
+{
+  width: auto;
+  aspect-ratio: 1/1;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 0.25rem;
+  color: red;
+  font-weight: bold;
+
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  justify-self: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.delete-exercise-icon:hover
+{
+  color: black;
+}
+
+
+.set-title
+{
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  font-weight: bold;
+  justify-self: center;
+  grid-area: 1/2/2/3;
+}
+
+
+.edit-title-form
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 15px;
+}
+
+
+.edit-title-btn
+{
+  /* padding: 3px; */
+  padding-block: 3px;
+  padding-inline: 15px;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: bold;
+  font-size: clamp(1rem, 3vw, 1.05rem);
+  border: solid white 2px;
+  border-radius: 0.75rem;
+}
+
+
+.edit-title-btn:hover
+{
+  background-color: orange;
+}
+
+
+.set-btn-container
+{
+  width: auto;
+  display: flex;
+  justify-content: end;
+  column-gap: 15px;
+}
+
+
+.edit-exercise-btn
+{
+  
+  background-color: transparent;
+  border: solid transparent 2px;
+  
+}
+
+
+.edit-exercise-icon
+{
+  padding: 3px;
+  color: purple;
+  height: auto;
+  aspect-ratio: 1/1;
+  font-size:2rem;
+}
+
+
+.edit-exercise-icon:hover
+{
+  color: red;
+}
+
+
+.new-set-btn 
+{
+  width: auto;
+  aspect-ratio: 1/1;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+
+  color: green;
+  font-weight: bold;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  grid-area: 1/3/2/4;
+}
+
+
+
+
+.plus-circle-icon:hover
+{
+  width: 100%;
+  aspect-ratio: 1/1;
+  /* background-color: green; */
+  color: white  ;
+  border: transparent;
+  border-radius: 50%;
+}
+
+
+.selector-div
+{
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.select-type-btn
+{
+  width: clamp(65px, 90%, 400px);
+  height: auto;
+  padding: 5px;
+  box-sizing: border-box;
+  border: none;
+
+  background-color: white;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  font-size: 0.95rem;
+  text-transform: capitalize;
+  
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+
+.set-btn:hover
+{
+  background-color: orange;
+}
+
+
+.workout-type
+{
+  width: clamp(65px, 90%, 400px);
+  height: auto;
+  padding-top: 3px;
+  background-color: transparent;
+  border-radius: 0.25rem;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+
+.workout-type-container
+{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.type-btn
+{
+  width: 100%;
+  background-color: rgb(70, 130, 180);
+  border: solid white 2px;
+  border-radius: 0.25rem;
+  padding: 5px;
+
+  text-transform: capitalize;
+  font-weight: bold;
+  color: white;
+}
+
+
+.weights-set
+{
+  background-color: #E23D28;
+  color: white;
+}
+
+
+.cardio-set
+{
+  background-color: blue;
+  color: white;
+}
+
+
+.type-btn:hover
+{
+  background-color: rgb(210, 210, 210);
+  color: dodgerblue;
+}
+
+
+.set-container
+{
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 10px;
+}
+
+
+.single-set
+{
+  width: clamp(75px, 10vw, 150px);
+  height: auto;
+  padding: 3px;
+  background-color: white;
+  border: solid darkgray 2px;
+  border-radius: 0.25rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 3px;
+}
+
+
+/* .single-set:nth-of-type(even)
+{
+  background-color: rgb(240, 240, 240);
+} */
+
+
+.delete-set-btn
+{
+  width: auto;
+  height: auto;
+  padding: 3px;
+
+  border: none;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  color: red;
+
+  align-self: center;
+  display: flex;
+  align-items: space-between;
+}
+
+
+.set-num
+{
+  align-self: center;
+  width: 100%;
+  background-color: dodgerblue;
+  border-radius: 0.45rem;
+  color: white;
+  vertical-align: middle;
+}
+
+
+.interval-num 
+{
+  align-self: center;
+  width: 100%;
+  background-color: red;
+  border-radius: 0.45rem;
+  color: white;
+  vertical-align: middle;
+}
+
+
+.delete-set-btn:hover
+{
+  color: white;
+  background: red;
+}
+
+
+
+code 
+{
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+/************************************************/
+/******************* Sidebar ********************/
+/************************************************/
+.sidebar-center
+{
+  display: flex;
+  justify-content: center;
+}
+
+
+.sidebar-list
+{
+  width: 100%;
+  margin-top: 20px;
+
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 25px;
+}
+
+.sidebar-btn
+{
+  width: 165px;
+  background-color: red;
+  padding: 3px;
+  border: none;
+  border-radius: 0.75rem;
+
+  font-size: 1.25rem;
+  font-family: 'Oleo Script', cursive;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 7px;
+}
+
+
+.sidebar-btn:hover
+{
+  background-color: rgb(255, 179, 71);
+}
+
+
+/************************************************/
+/******************* Products *******************/
+/************************************************/
+.products-page
+{
+  grid-area: log;
+  
+  width: calc(100% - var(--sidebar-width));
+  height: calc(100% + var(--mobile-navbar-height) + var(--mobile-sidebar-height));
+  transform: translate(var(--sidebar-width), var(--mobile-navbar-height));
+  background-color: #daf1fd;
+}
+
+
+.products-header
+{
+  margin-top: 20px;
+  color: red;
+  font-family: 'Oleo Script', cursive;
+  
+}
+
+.products-page-center
+{
+  background-color: #daf1fd;
+  width: 100%;
+  height: 100%;
+  padding-top: 40px;
+  margin-top: 10px;
+
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  row-gap: 40px;
+}
+
+
+.single-product
+{
+  width: clamp(150px, 80%, 500px);
+  padding: 10px;
+  border: solid white 2px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 0.75rem;
+  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  row-gap: 10px;
+}
+
+
+.single-product-center
+{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  row-gap: 10px;
+}
+
+
+.info-div
+{
+  width: 95%;
+  /* height: clamp(200px, 100%, 300px); */
+  height: auto;
+  padding: 5px;
+  border-radius: 0.5rem;
+
+  background-color: rgb(230, 230, 230);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  row-gap: 10px;
+}
+
+
+.single-product span
+{
+  text-align: start;
+  width: 100%;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  word-wrap: break-word;
+}
+
+
+.single-product-img
+{
+  width: clamp(100px, 45%, 250px);
+  aspect-ratio: 3/4;
+}
+
+
+.product-name
+{
+  width: 100%;
+  height: 75px;
+
+  font-weight: bold;
+  font-size: clamp(0.5rem, 25vw, 1rem) !important;
+  text-align: center !important;
+  color: red;
+  border-bottom: solid dodgerblue 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.product-desc
+{
+  color: dodgerblue;
+  font-weight: bold;
+}
+
+
+.product-btn
+{
+  align-self: center;
+  width: clamp(100px, 15vw, 150px);
+  padding: 10px;
+  border-radius: 0.5rem;
+
+  background: linear-gradient(0deg, rgba(223, 162, 6, 1) 11%, rgba(248, 237, 109, 1) 100%);
+  font-size: clamp(0.9rem, 3vw, 1.25rem);
+  font-weight: bold;
+}
+
+
+.product-btn:hover
+{
+  background: linear-gradient(180deg, rgba(223, 162, 6, 1) 11%, rgba(248, 237, 109, 1) 100%);
+  
+  /* color: red; */
+}
+
+
+
+/*************** Product Filters ***************/
+.filters-center
+{
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  column-gap: 15px;
+}
+
+
+.product-type-span
+{
+  font-weight: bold;
+}
+
+
+.product-type-div
+{
+  width: 95%;
+  padding: 10px;
+  border: solid dodgerblue 2px;
+  border-radius: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+}
+
+.product-filter-form
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 15px;
+}
+
+
+.product-form-btn
+{
+  background-color: blue;
+  color: white;
+  font-size: clamp(0.85rem, 4vw, 1.5rem);
+  padding-inline: 10px;
+}
+
+
+.product-form-btn:hover
+{
+  background-color: plum;
+  border: solid dodgerblue 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 500px)
+{
+  .body
+  {
+    width: 100%;
+    height: 100vh;
+  }
+
+
+  .App 
+  {
+    width: 100vw;
+    height: 100vh;
+    
+    display: grid;
+    justify-content: center;
+    grid-template-rows: auto;
+    grid-template-columns: auto repeat(4, minmax(50px, 1fr)); 
+    grid-template-areas: "navbar navbar navbar navbar navbar"
+      "log log log log log"
+      "log log log log log"
+      "log log log log log"
+      "sidebar sidebar sidebar sidebar sidebar";
+  }
+
+
+  .navbar
+  {
+    width: 100vw;
+    height: var(--mobile-navbar-height);
+    border-bottom: solid dodgerblue 2px;
+
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  .navbar-logo-div 
+  {
+    width: auto;
+    height: var(--mobile-navbar-height);
+    padding: 3px;
+  }
+
+
+  .navbar-center
+  {
+    justify-content: space-between;
+  }
+
+
+  .navbar ul
+  {
+    list-style-type: none;
+  }
+
+
+  .navbar-links
+  {
+    display: none;
+  }  
+  
+  
+  .navbar-toggle-btn
+  {
+    display: inline-block;
+  }
+
+
+  .navbar-logo-div
+  {
+    border: none;
+  }
+
+  .workout-log
+  {
+    left: 0px;
+    width: 100%;
+    transform: translateY(var(--mobile-navbar-height));
+  }
+
+
+  .workout-sheet
+  {
+    box-sizing: border-box;
+    height: auto;
+    margin-bottom: calc(var(--mobile-sidebar-height) ); /* 10px for extra margin */
+  }
+
+
+  .workout-log
+  {
+    top: var(--mobile-navbar-height);
+    /* background-color: #6CB4EE; */
+
+    width: 100vw;
+    height: auto;
+  }
+
+
+  .sidebar 
+  {
+    width: 100%;
+    height: var(--mobile-sidebar-height);
+    background: rgb(218, 241, 253);
+    border-top: solid dodgerblue 2px;
+
+    position: fixed;
+    top: calc(100vh - 70px);
+    z-index: 10000;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .sidebar-list
+  {
+    margin: 0px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  .sidebar-center
+  {
+    width: 100%;
+  }
+
+  .sidebar-btn
+  {
+    font-size: 0.75rem;
+
+    display: flex;
+    flex-direction: column;
+    width: 75px;
+    height: 50px;
+  }
+
+
+  /* Products Section */
+  .products-page
+  {
+    width: 100%;
+    grid-area: log;
+    transform: translate(0px, var(--mobile-navbar-height));
+  }
+
+
+  .display-modal 
+  {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+  }
+}

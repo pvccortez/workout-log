@@ -1,0 +1,12 @@
+:root
+{
+  --background-color: green;
+}
+
+
+.sidebar
+{
+  background-color: var(--background-color);
+
+  grid-area: sidebar;
+}
